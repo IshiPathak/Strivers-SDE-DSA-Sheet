@@ -1,15 +1,12 @@
 int merge(vector<int> &arr, int low, int mid, int high) {
     // Temporary array to store merged elements
     vector<int> temp;
-
     // Starting index of left half
     int left = low;
     // Starting index of right half
     int right = mid + 1;
-
     // Variable to count inversions
     int cnt = 0;
-
     // Merge elements in sorted order and count inversions
     while (left <= mid && right <= high) {
         if (arr[left] <= arr[right]) {
@@ -17,8 +14,8 @@ int merge(vector<int> &arr, int low, int mid, int high) {
             left++;
         } else {
             temp.push_back(arr[right]);
-            cnt += (mid - left + 1); // All remaining left elements are inversions
-            right++;
+            cnt += (mid - left + 1); //only significant change in mergesort
+            right++;    // All remaining left elements are inversions
         }
     }
 
@@ -45,25 +42,17 @@ int merge(vector<int> &arr, int low, int mid, int high) {
 
 // Merge sort function that counts inversions
 int mergeSort(vector<int> &arr, int low, int high) {
-    // Variable to store inversion count
-    int cnt = 0;
-
+    int cnt =0;
     // Base case
-    if (low >= high) return cnt;
-
+    if (low >= high) return;
     int mid = (low + high) / 2;
-
-    // Count inversions in left half
-    cnt += mergeSort(arr, low, mid);
-    // Count inversions in right half
-    cnt += mergeSort(arr, mid + 1, high);
-    // Count inversions during merge
-    cnt += merge(arr, low, mid, high);
-
+    cnt+=mergeSort(arr, low, mid);
+    cnt+=mergeSort(arr, mid + 1, high);
+    cnt+=merge(arr, low, mid, high);
     return cnt;
 }
 
 // Function to get number of inversions
 int numberOfInversions(vector<int>& a, int n) {
-    return mergeSort(a, 0, n - 1);
+    return mergeSort(a, 0, n-1);
 }
