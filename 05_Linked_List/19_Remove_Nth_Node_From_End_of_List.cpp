@@ -1,25 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-// Class representing a node in the linked list
-class Node {
-public:
-    int data;
-    Node* next;
-
-    // Constructor for Node with data and next node
-    Node(int data1, Node* next1) {
-        data = data1;
-        next = next1;
-    }
-
-    // Constructor for Node with only data 
-    // (next set to nullptr)
-    Node(int data1) {
-        data = data1;
-        next = nullptr;
-    }
-};
 
 // Class to hold the solution logic
 class Solution {
@@ -77,19 +55,3 @@ public:
         return head;
     }
 };
-
-int main() {
-    vector<int> arr = {1, 2, 3, 4, 5};
-    int N = 3;
-
-    // Creating linked list manually
-    Node* head = new Node(arr[0]);
-    head->next = new Node(arr[1]);
-    head->next->next = new Node(arr[2]);
-    head->next->next->next = new Node(arr[3]);
-    head->next->next->next->next = new Node(arr[4]);
-
-    Solution sol;
-    head = sol.deleteNthNodeFromEnd(head, N);
-    sol.printLL(head);
-}
