@@ -1,5 +1,3 @@
-
-// Class to hold the solution logic
 class Solution {
 public:
     // Function to print the linked list
