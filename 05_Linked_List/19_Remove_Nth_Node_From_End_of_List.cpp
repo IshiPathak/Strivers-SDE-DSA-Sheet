@@ -7,7 +7,6 @@ public:
         }
     }
     Node* deleteNthNodeFromEnd(Node* head, int N) {
-        // If list is empty, return NULL
         if (head == NULL) {
             return NULL;
         }
@@ -22,7 +21,6 @@ public:
 
         if (cnt == N) {
             Node* newHead = head->next;
-            // free memory
             delete head; 
             return newHead;
         }
