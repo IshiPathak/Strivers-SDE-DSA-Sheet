@@ -15,6 +15,5 @@ public:
             swap(l1,l2);
         }
         return res;
-    }
-    
+    }   
 };
