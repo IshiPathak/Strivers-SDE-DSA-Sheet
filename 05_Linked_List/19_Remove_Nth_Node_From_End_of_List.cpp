@@ -1,46 +1,19 @@
 class Solution {
 public:
-    void printLL(Node* head) {
-        while (head != NULL) {
-            cout << head->data << " ";
-            head = head->next;
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        for(int i = 0; i<n; i++){
+            fast = fast->next;
         }
-    }
-    Node* deleteNthNodeFromEnd(Node* head, int N) {
-        if (head == NULL) {
-            return NULL;
+        if(fast==NULL) return head->next;
+        while(fast->next != NULL){
+            fast=fast->next;
+            slow = slow->next;
         }
-
-        int cnt = 0;
-        Node* temp = head;
-
-        while (temp != NULL) {
-            cnt++;
-            temp = temp->next;
-        }
-
-        if (cnt == N) {
-            Node* newHead = head->next;
-            delete head; 
-            return newHead;
-        }
-
-        int res = cnt - N;
-        temp = head;
-
-
-        while (temp != NULL) {
-            res--;
-            if (res == 0) {
-                break;
-            }
-            temp = temp->next;
-        }
-
-        Node* delNode = temp->next;
-        temp->next = temp->next->next;
-        delete delNode; 
-
+        ListNode* delNode = slow->next;
+        slow->next = slow->next->next;
+        delete delNode;
         return head;
     }
 };
